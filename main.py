@@ -4,7 +4,7 @@ from crewai import Task, Crew
 from dotenv import load_dotenv
 
 load_dotenv()
-from agents import (
+from functions.agents import (
     researcher,
     Blogwriter,
     FinancialAdvisor,
