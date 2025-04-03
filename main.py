@@ -1,9 +1,11 @@
-import os
 import streamlit as st
 from crewai import Task, Crew
 from dotenv import load_dotenv
+from PIL import Image
 
-load_dotenv()
+
+load_dotenv(override=True)
+
 from functions.agents import (
     researcher,
     Blogwriter,
@@ -14,8 +16,12 @@ from functions.agents import (
     InvestigativeJournalist,
 )
 
-st.set_page_config("Crew Ai", "🧧", layout="wide")
-# Here is the saif app
+favicon = Image.open("favicon.png")
+
+
+st.set_page_config(page_title=
+    "Gen AI Demo | Trigent AXLR8 Labs", layout="wide", page_icon=favicon
+)
 
 with st.sidebar:
     st.header("About Crew Ai")
@@ -59,15 +65,15 @@ elif inputAgent == "💆🏻‍♀️ Wellness Blogger Agent":
     selectedAgent = WellnessBlogger
 elif inputAgent == "💲 Financial Advisor Agent":
     selectedAgent = FinancialAdvisor
-elif inputAgent == "🕵 Investigation Journalist Agent":
-    selectedAgent = InvestigativeJournalist
+# elif inputAgent == "🕵 Investigation Journalist Agent":
+#     selectedAgent = InvestigativeJournalist
 else:
     st.warning("Please select an agent")
 
 task1 = Task(
     description=st.text_input(
         "What type of information would you like me to generate?",
-        "should i invest in semi-conductor industry in 2024?",
+        "should I invest in semi-conductor industry in 2025?",
     ),
     agent=researcher,
 )
@@ -90,7 +96,7 @@ crew = Crew(
         FinancialAdvisor,
         RealEstateAnalyst,
         WellnessBlogger,
-        InvestigativeJournalist,
+        # InvestigativeJournalist,
     ],
     tasks=[task1, task2],
     verbose=2,

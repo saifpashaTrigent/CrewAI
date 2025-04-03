@@ -2,3 +2,5 @@
 crewTest
 .crewTest
 __pycache__
+.qodo
+.venv

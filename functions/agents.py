@@ -1,6 +1,6 @@
 from crewai import Agent
-from langchain.chat_models import ChatOpenAI
-from langchain.tools import DuckDuckGoSearchResults
+from langchain_community.chat_models import AzureChatOpenAI
+from langchain_community.tools import DuckDuckGoSearchResults
 
 search_tools = DuckDuckGoSearchResults()
 
@@ -17,8 +17,8 @@ researcher = Agent(
     backstory=researherTemplateBackStory,
     verbose=True,
     allow_delegation=True,
-    llm=ChatOpenAI(model="gpt-4-1106-preview", temperature=0.7),
-    tools=[search_tools]
+    llm=AzureChatOpenAI(azure_deployment="gpt-4o", temperature=0.5,openai_api_version="2024-02-15-preview"),
+    # tools=[search_tools]
 )
 
 Blogwriter = Agent(
@@ -27,8 +27,8 @@ Blogwriter = Agent(
     backstory="You are an awesome blog writer with 50 years of experience",
     verbose=True,
     allow_delegation=True,
-    llm=ChatOpenAI(model="gpt-4-1106-preview", temperature=0.5),
-    tools=[search_tools]
+    llm=AzureChatOpenAI(azure_deployment="gpt-4o", temperature=0.5,openai_api_version="2024-02-15-preview"),
+    # tools=[search_tools]
 )
 
 
@@ -40,8 +40,8 @@ FinancialAdvisor = Agent(
     Also include the conclusion at the end.''',
     verbose=True,
     allow_delegation=True,
-    llm=ChatOpenAI(model="gpt-4-1106-preview", temperature=0.5),
-    tools=[search_tools]
+    llm=AzureChatOpenAI(azure_deployment="gpt-4o", temperature=0.5,openai_api_version="2024-02-15-preview"),
+    # tools=[search_tools]
 )
 
 RealEstateAnalyst = Agent(
@@ -51,8 +51,8 @@ RealEstateAnalyst = Agent(
       offering in-depth market analyses and recommendations.""",
     verbose=True,
     allow_delegation=True,
-    llm=ChatOpenAI(model="gpt-4-1106-preview", temperature=0.5),
-    tools=[search_tools]
+    llm=AzureChatOpenAI(azure_deployment="gpt-4o", temperature=0.5,openai_api_version="2024-02-15-preview"),
+    # tools=[search_tools]
 )
 
 
@@ -62,8 +62,8 @@ WellnessBlogger = Agent(
     backstory="A health enthusiast and blogger with 20 years of experience promoting a healthy lifestyle.",
     verbose=True,
     allow_delegation=True,
-    llm=ChatOpenAI(model="gpt-4-1106-preview", temperature=0.5),
-    tools=[search_tools]
+    llm=AzureChatOpenAI(azure_deployment="gpt-4o", temperature=0.5,openai_api_version="2024-02-15-preview"),
+    # tools=[search_tools]
 )
 
 HumanRightsResearcher = Agent(
@@ -72,8 +72,8 @@ HumanRightsResearcher = Agent(
     backstory="A dedicated human rights researcher with 25 years of experience, delving into global issues and advocating for justice.",
     verbose=True,
     allow_delegation=True,
-    llm=ChatOpenAI(model="gpt-4-1106-preview", temperature=0.5),
-    tools=[search_tools]
+    llm=AzureChatOpenAI(azure_deployment="gpt-4o", temperature=0.5,openai_api_version="2024-02-15-preview"),
+    # tools=[search_tools]
 )
 
 InvestigativeJournalist = Agent(
@@ -82,6 +82,6 @@ InvestigativeJournalist = Agent(
     backstory="An investigative journalist with a knack for uncovering hidden truths and exposing corruption, dedicated to truth-seeking for 20 years.",
     verbose=True,
     allow_delegation=True,
-    llm=ChatOpenAI(model="gpt-4-1106-preview", temperature=0.5),
-    tools=[search_tools]
+    llm=AzureChatOpenAI(azure_deployment="gpt-4o", temperature=0.5,openai_api_version="2024-02-15-preview"),
+    # tools=[search_tools]
 )
